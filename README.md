@@ -1,9 +1,7 @@
 # clinic-assessment-dotnet
- Clinic project assessment
+ Clinic project assessment redone in .net core 6
 
-*** Some additional tasks have been included in the BONUS folder ***
-
- Port = 8090
+ Port = 7053
  Prefix to endpoint = /api
  ________________________________________________________________________________________________________________________________________
 |  Endpoint                             |  Mapping  | Requirement                                                 | Access               |
