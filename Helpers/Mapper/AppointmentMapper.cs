@@ -16,7 +16,7 @@ namespace clinic_assessment_redone.Helpers.Mapper
                 DateCreated = Util.stringDateToDate(req.appointmentDate),
                 TimeStart = Util.stringTimeToTime(req.appointmentTimeStart),
                 TimeEnd = Util.stringTimeToTime(req.appointmentTimeEnd),
-                Status = Constants.APPOINTMENT_STATUS_VALID
+                Status = Consts.APPOINTMENT_STATUS_VALID
             };
         }
 

@@ -32,7 +32,7 @@ namespace clinic_assessment_redone.Helpers.Controllers
             /* Validate that the user exists */
             if (clinicUser == null)
             {
-                throw new RestException(StatusCodes.Status401Unauthorized, Constants.INVALID_CREDENTIALS);
+                throw new RestException(StatusCodes.Status401Unauthorized, Consts.INVALID_CREDENTIALS);
             }
 
             /* Verify password */
@@ -40,7 +40,7 @@ namespace clinic_assessment_redone.Helpers.Controllers
 
             if (!isPasswordMatch)
             {
-                throw new RestException(StatusCodes.Status401Unauthorized, Constants.INVALID_CREDENTIALS);
+                throw new RestException(StatusCodes.Status401Unauthorized, Consts.INVALID_CREDENTIALS);
             }
 
             /* Generate JWT */
@@ -55,7 +55,7 @@ namespace clinic_assessment_redone.Helpers.Controllers
                 userClaims.Add(new Claim(ClaimTypes.Role, role.Name));
             }
 
-            DateTime accessTokenExpiry = DateTime.Now.AddMinutes(Constants.JWT_ACCESS_EXPIRY);
+            DateTime accessTokenExpiry = DateTime.Now.AddMinutes(Consts.JWT_ACCESS_EXPIRY);
             LoginResDto loginResDto = new LoginResDto
             {
                 accessToken = Util.CreateToken(
@@ -68,7 +68,7 @@ namespace clinic_assessment_redone.Helpers.Controllers
                     clinicUser.Email,
                      _configuration,
                     userClaims,
-                    accessTokenExpiry.AddMinutes(Constants.JWT_REFRESH_EXPIRY)
+                    accessTokenExpiry.AddMinutes(Consts.JWT_REFRESH_EXPIRY)
                     )
             };
 

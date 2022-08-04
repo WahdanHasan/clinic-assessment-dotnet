@@ -10,12 +10,12 @@ namespace clinic_assessment_redone.Helpers.Converter
         public override DateOnly Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
             return DateOnly.ParseExact(reader.GetString()!,
-                         Constants.DATE_FORMAT, CultureInfo.InvariantCulture);
+                         Consts.DATE_FORMAT, CultureInfo.InvariantCulture);
         }
 
         public override void Write(Utf8JsonWriter writer, DateOnly value, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(value.ToString(Constants.DATE_FORMAT, CultureInfo.InvariantCulture));
+            writer.WriteStringValue(value.ToString(Consts.DATE_FORMAT, CultureInfo.InvariantCulture));
         }
     }
 }

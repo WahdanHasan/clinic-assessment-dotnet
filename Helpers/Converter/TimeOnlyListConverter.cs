@@ -28,7 +28,7 @@ namespace clinic_assessment_redone.Helpers.Converter
 
             foreach(TimeOnly time in value)
             {
-                output += time.ToString(Constants.TIME_FORMAT, CultureInfo.InvariantCulture) + " ";
+                output += time.ToString(Consts.TIME_FORMAT, CultureInfo.InvariantCulture) + " ";
             }
 
             writer.WriteStringValue(output);

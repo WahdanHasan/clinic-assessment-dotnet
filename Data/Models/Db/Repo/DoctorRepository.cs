@@ -53,7 +53,7 @@ namespace clinic_assessment.data.Models.Db.Repo
                     lastName = d.LastName,
                     appointmentHours = _dataContext.Appointment
                     .Where(a => a.Doctor.Id == d.Id)
-                    .Sum(a => a.DurationMins) / Constants.MINUTES_IN_HOUR
+                    .Sum(a => a.DurationMins) / Consts.MINUTES_IN_HOUR
 
                 }).ToListAsync();
 

@@ -34,7 +34,7 @@ namespace clinic_assessment_redone.Api.Controllers
         }
 
         [HttpGet("{appointmentId}/details")]
-        [Permissions(Constants.PERMISSION_APPOINTMENT_DETAILS)]
+        [Permissions(Consts.PERMISSION_APPOINTMENT_DETAILS)]
         public async Task<IActionResult> GetAptDetails([FromRoute] int appointmentId)
         {
             var res = await _appointmentHelper.GetAppointmentDetails(appointmentId);
@@ -43,7 +43,7 @@ namespace clinic_assessment_redone.Api.Controllers
         }
 
         [HttpPut("{appointmentId}/cancel")]
-        [Permissions(Constants.PERMISSION_APPOINTMENT_CANCEL)]
+        [Permissions(Consts.PERMISSION_APPOINTMENT_CANCEL)]
         public async Task<IActionResult> Cancel([FromRoute] int appointmentId)
         {
             await _appointmentHelper.CancelAppointment(appointmentId);
@@ -52,7 +52,7 @@ namespace clinic_assessment_redone.Api.Controllers
         }
 
         [HttpPost("book")]
-        [Permissions(Constants.PERMISSION_APPOINTMENT_CREATE)]
+        [Permissions(Consts.PERMISSION_APPOINTMENT_CREATE)]
         public async Task<IActionResult> Book([FromBody] BookAppointmentReqDto req)
         {
             await _appointmentHelper.BookAppointment(req);

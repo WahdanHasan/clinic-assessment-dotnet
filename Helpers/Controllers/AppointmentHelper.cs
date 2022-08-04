@@ -31,7 +31,7 @@ namespace clinic_assessment_redone.Helpers.Controllers
 
             if (doctor == null)
             {
-                throw new RestException(StatusCodes.Status400BadRequest, String.Format(Constants.NOT_FOUND, req.doctorId));
+                throw new RestException(StatusCodes.Status400BadRequest, String.Format(Consts.NOT_FOUND, req.doctorId));
             }
 
             // Validate patient
@@ -39,7 +39,7 @@ namespace clinic_assessment_redone.Helpers.Controllers
 
             if (patient == null)
             {
-                throw new RestException(StatusCodes.Status400BadRequest, String.Format(Constants.NOT_FOUND, req.patientId));
+                throw new RestException(StatusCodes.Status400BadRequest, String.Format(Consts.NOT_FOUND, req.patientId));
 
             }
 
@@ -47,7 +47,7 @@ namespace clinic_assessment_redone.Helpers.Controllers
             /* Validate date format and ensure it does not exceed the max duration*/
 
             DateOnly appointmentDate = Util.stringDateToDate(req.appointmentDate);
-            DateOnly maxAppointmentDate = DateOnly.FromDateTime(DateTime.Now).AddDays(Constants.APPOINTMENT_LOOKAHEAD_DAYS);
+            DateOnly maxAppointmentDate = DateOnly.FromDateTime(DateTime.Now).AddDays(Consts.APPOINTMENT_LOOKAHEAD_DAYS);
             DateOnly yesterdayDate = DateOnly.FromDateTime(DateTime.Now).AddDays(-1);
 
             // If appointment date is after the max date or before the min date
@@ -56,9 +56,9 @@ namespace clinic_assessment_redone.Helpers.Controllers
                 throw new RestException(
                         StatusCodes.Status400BadRequest,
                         String.Format(
-                                Constants.FIELD_OUTSIDE_RANGE,
+                                Consts.FIELD_OUTSIDE_RANGE,
                                 "appointmentDate",
-                                "up to " + Constants.APPOINTMENT_LOOKAHEAD_DAYS + " days ahead from current date"));
+                                "up to " + Consts.APPOINTMENT_LOOKAHEAD_DAYS + " days ahead from current date"));
             }
 
 
@@ -78,23 +78,23 @@ namespace clinic_assessment_redone.Helpers.Controllers
             {
                 throw new RestException(
                         StatusCodes.Status400BadRequest,
-                        String.Format(Constants.TIME_OCCURS_TIME_DATE, appointmentTimeStart.ToString(), appointmentTimeEnd.ToString())
+                        String.Format(Consts.TIME_OCCURS_TIME_DATE, appointmentTimeStart.ToString(), appointmentTimeEnd.ToString())
                 );
             }
 
 
             /* Ensure the appointment duration is within limits */
             int appointmentDurationMins = Util.MinutesBetweenTimes(appointmentTimeStart, appointmentTimeEnd);
-            if (appointmentDurationMins > Constants.APPOINTMENT_MAX_MINUTES
-                    || appointmentDurationMins < Constants.APPOINTMENT_MIN_MINUTES)
+            if (appointmentDurationMins > Consts.APPOINTMENT_MAX_MINUTES
+                    || appointmentDurationMins < Consts.APPOINTMENT_MIN_MINUTES)
             {
 
                 throw new RestException(
                         StatusCodes.Status400BadRequest,
                         String.Format(
-                                Constants.FIELD_OUTSIDE_RANGE,
+                                Consts.FIELD_OUTSIDE_RANGE,
                                 "appointmentDurationMins",
-                                Constants.APPOINTMENT_MIN_MINUTES + " to " + Constants.APPOINTMENT_MAX_MINUTES + " mins")
+                                Consts.APPOINTMENT_MIN_MINUTES + " to " + Consts.APPOINTMENT_MAX_MINUTES + " mins")
                 );
             }
 
@@ -124,7 +124,7 @@ namespace clinic_assessment_redone.Helpers.Controllers
 
             if (!appointmentBetweenSchedule)
             {
-                throw new RestException(StatusCodes.Status400BadRequest, Constants.OUTSIDE_DOCTOR_SCHEDULE);
+                throw new RestException(StatusCodes.Status400BadRequest, Consts.OUTSIDE_DOCTOR_SCHEDULE);
             }
 
 
@@ -132,15 +132,15 @@ namespace clinic_assessment_redone.Helpers.Controllers
             List<Appointment> doctorsAppointments = await ((IAppointmentRepository)_appointmentRepository)
                     .GetAppointmentsForDayByDoctorId(appointmentDate,
                                            doctor.Id,
-                                           Constants.APPOINTMENT_STATUS_VALID);
+                                           Consts.APPOINTMENT_STATUS_VALID);
 
             /* Check appointment count */
-            if (doctorsAppointments.Count > Constants.APPOINTMENT_MAX_COUNT)
+            if (doctorsAppointments.Count > Consts.APPOINTMENT_MAX_COUNT)
             {
                 throw new RestException(
                         StatusCodes.Status503ServiceUnavailable,
                         String.Format(
-                                Constants.DOCTOR_FULL_SCHEDULE,
+                                Consts.DOCTOR_FULL_SCHEDULE,
                                 req.appointmentDate)
                 );
             }
@@ -152,12 +152,12 @@ namespace clinic_assessment_redone.Helpers.Controllers
                 totalAppointmentDurationMins += doctorAppointment.DurationMins;
             }
 
-            if (totalAppointmentDurationMins > Constants.APPOINTMENT_MAX_TOTAL_MINUTES)
+            if (totalAppointmentDurationMins > Consts.APPOINTMENT_MAX_TOTAL_MINUTES)
             {
                 throw new RestException(
                         StatusCodes.Status503ServiceUnavailable,
                         String.Format(
-                                Constants.DOCTOR_FULL_SCHEDULE,
+                                Consts.DOCTOR_FULL_SCHEDULE,
                                 req.appointmentDate)
                 );
             }
@@ -179,7 +179,7 @@ namespace clinic_assessment_redone.Helpers.Controllers
                     || (appointmentTimeEnd > tempAppointmentTimeStart && appointmentTimeEnd < tempAppointmentTimeEnd))
                 || (appointmentTimeStart == tempAppointmentTimeStart || appointmentTimeEnd == tempAppointmentTimeEnd))
                 {
-                    throw new RestException(StatusCodes.Status400BadRequest, Constants.DOCTOR_UNAVAILABLE_DURING_HOURS);
+                    throw new RestException(StatusCodes.Status400BadRequest, Consts.DOCTOR_UNAVAILABLE_DURING_HOURS);
                 }
             }
 
@@ -188,7 +188,7 @@ namespace clinic_assessment_redone.Helpers.Controllers
             List<Appointment> patientAppointments = await ((IAppointmentRepository)_appointmentRepository).
                     GetAppointmentsForDayByPatientId(appointmentDate,
                                                      req.patientId,
-                                                     Constants.APPOINTMENT_STATUS_VALID);
+                                                     Consts.APPOINTMENT_STATUS_VALID);
 
             foreach (Appointment patientAppointment in patientAppointments)
             {
@@ -200,7 +200,7 @@ namespace clinic_assessment_redone.Helpers.Controllers
                 if (appointmentTimeStart > tempAppointmentTimeStart && appointmentTimeStart < tempAppointmentTimeEnd
                         || appointmentTimeEnd > tempAppointmentTimeStart && appointmentTimeEnd < tempAppointmentTimeEnd)
                 {
-                    throw new RestException(StatusCodes.Status400BadRequest, Constants.PATIENT_OVERLAPPING_APPOINTMENTS);
+                    throw new RestException(StatusCodes.Status400BadRequest, Consts.PATIENT_OVERLAPPING_APPOINTMENTS);
                 }
             }
 
@@ -223,11 +223,11 @@ namespace clinic_assessment_redone.Helpers.Controllers
             /* If appointment is null, throw exception that the appointment doesnt exist */
             if (appointment == null)
             {
-                throw new RestException(StatusCodes.Status400BadRequest, Constants.NOT_FOUND);
+                throw new RestException(StatusCodes.Status400BadRequest, Consts.NOT_FOUND);
             }
 
             /* Update the appointment status */
-            appointment.Status = Constants.APPOINTMENT_STATUS_CANCELLED;
+            appointment.Status = Consts.APPOINTMENT_STATUS_CANCELLED;
 
             /* Persist changes to DB */
             await ((IAppointmentRepository)_appointmentRepository).Insert(appointment);
@@ -256,7 +256,7 @@ namespace clinic_assessment_redone.Helpers.Controllers
             /* If appointment is null, throw exception that the appointment doesnt exist */
             if (dto == null)
             {
-                throw new RestException(StatusCodes.Status400BadRequest, String.Format(Constants.NOT_FOUND, appointmentId));
+                throw new RestException(StatusCodes.Status400BadRequest, String.Format(Consts.NOT_FOUND, appointmentId));
             }
 
             dto.durationMins = Util.MinutesBetweenTimes(dto.timeStart, dto.timeEnd);

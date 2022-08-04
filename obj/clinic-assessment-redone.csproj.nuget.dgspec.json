@@ -68,6 +68,10 @@
               "target": "Package",
               "version": "[6.0.7, )"
             },
+            "Microsoft.Identity.Web": {
+              "target": "Package",
+              "version": "[1.25.1, )"
+            },
             "Microsoft.IdentityModel.Tokens": {
               "target": "Package",
               "version": "[6.21.0, )"

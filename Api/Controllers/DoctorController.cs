@@ -35,7 +35,7 @@ namespace clinic_assessment_redone.Api.Controllers
         }
 
         [HttpGet("busy/{date}")]
-        [Permissions(Constants.PERMISSION_DOCTOR_BUSY_APT_COUNT)]
+        [Permissions(Consts.PERMISSION_DOCTOR_BUSY_APT_COUNT)]
         public async Task<IActionResult> Get([FromRoute] string date)
         {
             var res = await _doctorHelper.GetAllBusyByAptCount(date);
@@ -44,7 +44,7 @@ namespace clinic_assessment_redone.Api.Controllers
         }
 
         [HttpGet("busy/{date}/{minimum-hours}")]
-        [Permissions(Constants.PERMISSION_DOCTOR_BUSY_MIN_HOURS)]
+        [Permissions(Consts.PERMISSION_DOCTOR_BUSY_MIN_HOURS)]
         public async Task<IActionResult> Get([FromRoute] string date, int minHours)
         {
             var res = await _doctorHelper.GetAllBusyByMinHours(date, minHours);
@@ -53,7 +53,7 @@ namespace clinic_assessment_redone.Api.Controllers
         }
 
         [HttpGet("{id}/slots")]
-        [Permissions(Constants.PERMISSION_DOCTOR_AVAILABLE_SLOTS)]
+        [Permissions(Consts.PERMISSION_DOCTOR_AVAILABLE_SLOTS)]
         public async Task<IActionResult> Get([FromRoute(Name = "id")] int doctorId, 
                                              [FromQuery] string date)
         {
@@ -63,7 +63,7 @@ namespace clinic_assessment_redone.Api.Controllers
         }
 
         [HttpGet("all/slots")]
-        [Permissions(Constants.PERMISSION_DOCTOR_AVAILABLE_SLOTS)]
+        [Permissions(Consts.PERMISSION_DOCTOR_AVAILABLE_SLOTS)]
         public async Task<IActionResult> GetAllSlots([FromQuery] string date)
         {
             var res = await _doctorHelper.GetAllAvailableSlots(date);

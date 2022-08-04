@@ -70,3 +70,17 @@ C:\Users\wahda\source\repos\CX Unicorn\clinic-assessment-redone\clinic-assessmen
 C:\Users\wahda\source\repos\CX Unicorn\clinic-assessment-redone\clinic-assessment-redone\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\wahda\source\repos\CX Unicorn\clinic-assessment-redone\clinic-assessment-redone\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
 C:\Users\wahda\source\repos\CX Unicorn\clinic-assessment-redone\clinic-assessment-redone\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\wahda\source\repos\CX Unicorn\clinic-assessment-redone\clinic-assessment-redone\bin\Debug\net6.0\Azure.Core.dll
+C:\Users\wahda\source\repos\CX Unicorn\clinic-assessment-redone\clinic-assessment-redone\bin\Debug\net6.0\Azure.Identity.dll
+C:\Users\wahda\source\repos\CX Unicorn\clinic-assessment-redone\clinic-assessment-redone\bin\Debug\net6.0\Azure.Security.KeyVault.Certificates.dll
+C:\Users\wahda\source\repos\CX Unicorn\clinic-assessment-redone\clinic-assessment-redone\bin\Debug\net6.0\Azure.Security.KeyVault.Secrets.dll
+C:\Users\wahda\source\repos\CX Unicorn\clinic-assessment-redone\clinic-assessment-redone\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.OpenIdConnect.dll
+C:\Users\wahda\source\repos\CX Unicorn\clinic-assessment-redone\clinic-assessment-redone\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\wahda\source\repos\CX Unicorn\clinic-assessment-redone\clinic-assessment-redone\bin\Debug\net6.0\Microsoft.Identity.Client.dll
+C:\Users\wahda\source\repos\CX Unicorn\clinic-assessment-redone\clinic-assessment-redone\bin\Debug\net6.0\Microsoft.Identity.Client.Extensions.Msal.dll
+C:\Users\wahda\source\repos\CX Unicorn\clinic-assessment-redone\clinic-assessment-redone\bin\Debug\net6.0\Microsoft.Identity.Web.dll
+C:\Users\wahda\source\repos\CX Unicorn\clinic-assessment-redone\clinic-assessment-redone\bin\Debug\net6.0\Microsoft.Identity.Web.Certificate.dll
+C:\Users\wahda\source\repos\CX Unicorn\clinic-assessment-redone\clinic-assessment-redone\bin\Debug\net6.0\Microsoft.Identity.Web.Certificateless.dll
+C:\Users\wahda\source\repos\CX Unicorn\clinic-assessment-redone\clinic-assessment-redone\bin\Debug\net6.0\Microsoft.Identity.Web.TokenCache.dll
+C:\Users\wahda\source\repos\CX Unicorn\clinic-assessment-redone\clinic-assessment-redone\bin\Debug\net6.0\Microsoft.IdentityModel.LoggingExtensions.dll
+C:\Users\wahda\source\repos\CX Unicorn\clinic-assessment-redone\clinic-assessment-redone\bin\Debug\net6.0\Microsoft.IdentityModel.Validators.dll

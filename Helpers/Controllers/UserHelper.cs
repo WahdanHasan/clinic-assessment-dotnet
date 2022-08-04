@@ -47,7 +47,7 @@ namespace clinic_assessment_redone.Helpers.Controllers
             /* Verify the integrity of the payload data */
             if (req == null)
             {
-                throw new RestException(StatusCodes.Status400BadRequest, Constants.MISSING_PAYLOAD);
+                throw new RestException(StatusCodes.Status400BadRequest, Consts.MISSING_PAYLOAD);
             }
 
             /* Validate user fields */
@@ -58,14 +58,14 @@ namespace clinic_assessment_redone.Helpers.Controllers
 
             if (clinicUser != null)
             {
-                throw new RestException(StatusCodes.Status400BadRequest, String.Format(Constants.USER_EXISTS, req.user.email));
+                throw new RestException(StatusCodes.Status400BadRequest, String.Format(Consts.USER_EXISTS, req.user.email));
             }
 
 
             /* Verify the integrity of the roles. If they are valid, add them to the entity */
             if (req.user.roles == null || req.user.roles.Count == 0)
             {
-                throw new RestException(StatusCodes.Status400BadRequest, String.Format(Constants.MISSING_FIELD, "roles"));
+                throw new RestException(StatusCodes.Status400BadRequest, String.Format(Consts.MISSING_FIELD, "roles"));
 
             }
 
@@ -106,7 +106,7 @@ namespace clinic_assessment_redone.Helpers.Controllers
                     continue;
                 }
 
-                throw new RestException(StatusCodes.Status400BadRequest, String.Format(Constants.INVALID_FIELD_VALUE, "roles", req.user.roles[i]));
+                throw new RestException(StatusCodes.Status400BadRequest, String.Format(Consts.INVALID_FIELD_VALUE, "roles", req.user.roles[i]));
 
             }
 
@@ -123,7 +123,7 @@ namespace clinic_assessment_redone.Helpers.Controllers
 
             if (Util.containsMultipleUniqueRoles(req.user.roles))
             {
-                throw new RestException(StatusCodes.Status400BadRequest, String.Format(Constants.MULTIPLE_UNIQUE_FIELD_VALUES, "roles"));
+                throw new RestException(StatusCodes.Status400BadRequest, String.Format(Consts.MULTIPLE_UNIQUE_FIELD_VALUES, "roles"));
             }
 
             /* Validate the employee attributes */
@@ -134,7 +134,7 @@ namespace clinic_assessment_redone.Helpers.Controllers
 
             /* Convert request DTO to entity based on role, then save the entity to DB */
             /* This design assumes that certain roles are unique and a user cannot have more than one */
-            if (req.user.roles.Contains(Constants.ROLE_DOCTOR))
+            if (req.user.roles.Contains(Consts.ROLE_DOCTOR))
             {
                 Doctor doctor = UserMapper.RegisterUserReqDtoToDoctorEntity(req);
 
@@ -142,7 +142,7 @@ namespace clinic_assessment_redone.Helpers.Controllers
 
                 await _doctorRepository.Save();
             }
-            else if (req.user.roles.Contains(Constants.ROLE_PATIENT))
+            else if (req.user.roles.Contains(Consts.ROLE_PATIENT))
             {
                 Patient patient = UserMapper.RegisterUserReqDtoToPatientEntity(req);
 
@@ -150,7 +150,7 @@ namespace clinic_assessment_redone.Helpers.Controllers
 
                 await _patientRepository.Save();
             }
-            else if (req.user.roles.Contains(Constants.ROLE_CA))
+            else if (req.user.roles.Contains(Consts.ROLE_CA))
             {
                 Employee clinicAdmin = UserMapper.RegisterUserReqDtoToEmployeeEntity(req);
 

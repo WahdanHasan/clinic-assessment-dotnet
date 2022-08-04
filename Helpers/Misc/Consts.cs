@@ -1,12 +1,12 @@
 ﻿namespace clinic_assessment_redone.Helpers.Misc
 {
-    public static class Constants
+    public static class Consts
     {
 
         /* Program roles */
         public static readonly string ROLE_DOCTOR = "doctor";
         public static readonly string ROLE_PATIENT = "patient";
-        public static readonly string ROLE_CA = "clinic admin";
+        public static readonly string ROLE_CA = "clinic_admin";
 
         /* Program permissions */
         public const string CLAIM_TYPE_PERMISSION = "permissions";

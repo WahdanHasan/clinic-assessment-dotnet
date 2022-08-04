@@ -5,7 +5,7 @@ namespace clinic_assessment_redone.Middleware.Authorization.Attribute
 {
     public class PermissionsAttribute : AuthorizeAttribute
     {
-        const string POLICY_PREFIX = Constants.CLAIM_TYPE_PERMISSION;
+        const string POLICY_PREFIX = Consts.CLAIM_TYPE_PERMISSION;
 
         public PermissionsAttribute(string permissionName) => PermissionName = permissionName;
 

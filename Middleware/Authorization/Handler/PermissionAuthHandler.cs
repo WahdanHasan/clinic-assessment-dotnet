@@ -30,10 +30,10 @@ namespace clinic_assessment_redone.Middleware.Authorization.Handler
 
             if (jwtEncoded == null)
             {
-                throw new RestException(StatusCodes.Status401Unauthorized, Constants.NO_ACCESS_TOKEN);
+                throw new RestException(StatusCodes.Status401Unauthorized, Consts.NO_ACCESS_TOKEN);
             }
 
-            jwtEncoded = jwtEncoded.Substring(Constants.TOKEN_PREFIX.Length);
+            jwtEncoded = jwtEncoded.Substring(Consts.TOKEN_PREFIX.Length);
 
             var token = new JwtSecurityToken(jwtEncoded);
 

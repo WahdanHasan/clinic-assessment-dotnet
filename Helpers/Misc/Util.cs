@@ -52,11 +52,11 @@ namespace clinic_assessment_redone.Helpers.Misc
 
         public static DateOnly stringDateToDate(string date)
         {
-            return DateOnly.ParseExact(date, Constants.DATE_FORMAT, null);
+            return DateOnly.ParseExact(date, Consts.DATE_FORMAT, null);
         }
         public static TimeOnly stringTimeToTime(string time)
         {
-            return TimeOnly.ParseExact(time, Constants.TIME_FORMAT, null);
+            return TimeOnly.ParseExact(time, Consts.TIME_FORMAT, null);
         }
 
         public static bool roleHasPermission(RolePermissionsDto rolePermission, string permissionName)
@@ -86,9 +86,9 @@ namespace clinic_assessment_redone.Helpers.Misc
 
         public static bool containsMultipleUniqueRoles(IEnumerable<string> roles)
         {
-            bool containsRoleDoctor = roles.Contains(Constants.ROLE_DOCTOR);
-            bool containsRolePatient = roles.Contains(Constants.ROLE_PATIENT);
-            bool containsRoleCA = roles.Contains(Constants.ROLE_CA);
+            bool containsRoleDoctor = roles.Contains(Consts.ROLE_DOCTOR);
+            bool containsRolePatient = roles.Contains(Consts.ROLE_PATIENT);
+            bool containsRoleCA = roles.Contains(Consts.ROLE_CA);
 
             if (containsRoleDoctor && containsRolePatient
                 || containsRoleDoctor && containsRoleCA
@@ -124,7 +124,7 @@ namespace clinic_assessment_redone.Helpers.Misc
             int hours = t1.Hour - t2.Hour;
             int minutes = t1.Minute - t2.Minute;
 
-            return (Math.Abs(hours) * Constants.MINUTES_IN_HOUR)
+            return (Math.Abs(hours) * Consts.MINUTES_IN_HOUR)
                   + Math.Abs(minutes);
         }
         public static List<TimeOnly> GetStartTimesFromAppointmentList(List<Appointment> appointmentList)
@@ -230,7 +230,7 @@ namespace clinic_assessment_redone.Helpers.Misc
                     *  Else, set this as an available slot
                     *
                     *  */
-                    if (timeDuration < Constants.APPOINTMENT_MIN_MINUTES && timeDuration > 0)
+                    if (timeDuration < Consts.APPOINTMENT_MIN_MINUTES && timeDuration > 0)
                     {
                         continue;
                     }
@@ -257,7 +257,7 @@ namespace clinic_assessment_redone.Helpers.Misc
 
                 timeDuration = MinutesBetweenTimes(timeStart, timeEnd);
 
-                if (timeDuration > Constants.APPOINTMENT_MIN_MINUTES)
+                if (timeDuration > Consts.APPOINTMENT_MIN_MINUTES)
                 {
                     tempDoctorAvailableSlot = new BasicAppointmentDetails();
 

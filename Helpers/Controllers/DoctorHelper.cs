@@ -82,7 +82,7 @@ namespace clinic_assessment_redone.Helpers.Controllers
 
             if (doctor == null)
             {
-                throw new RestException(StatusCodes.Status400BadRequest, String.Format(Constants.NOT_FOUND, doctorId));
+                throw new RestException(StatusCodes.Status400BadRequest, String.Format(Consts.NOT_FOUND, doctorId));
             }
 
             DateOnly appointmentHistoryDate = DateOnly.Parse(date);
@@ -136,7 +136,7 @@ namespace clinic_assessment_redone.Helpers.Controllers
         {
             /* Get all appointments for the date */
             List<Appointment> appointmentsList = await ((IAppointmentRepository)_appointmentRepository)
-                    .GetAppointmentsByDate(Util.stringDateToDate(date), Constants.APPOINTMENT_STATUS_VALID);
+                    .GetAppointmentsByDate(Util.stringDateToDate(date), Consts.APPOINTMENT_STATUS_VALID);
 
 
             /* Get all doctor entities */
@@ -304,7 +304,7 @@ namespace clinic_assessment_redone.Helpers.Controllers
             /* Validate that the doctor exists */
             if (dto == null)
             {
-                throw new RestException(StatusCodes.Status400BadRequest, String.Format(Constants.NOT_FOUND, doctorId));
+                throw new RestException(StatusCodes.Status400BadRequest, String.Format(Consts.NOT_FOUND, doctorId));
             }
             
             /* Extrapolate work schedule from the available information */
